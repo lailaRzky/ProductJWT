@@ -9,22 +9,6 @@ tugas12/
 
 ## Fitur yang sudah diimplementasikan
 
-**Backend**
-- `POST /auth/register` — hash password dengan bcrypt, cek email duplikat (409)
-- `POST /auth/login` — verifikasi bcrypt, generate JWT
-- `GET /auth/profile` — dilindungi `AuthGuard('jwt')` (Passport strategy)
-- `GET/POST/PUT/DELETE /api/v1/products` — semua dilindungi `JwtAuthGuard` custom (401 jika tanpa/token invalid)
-- Validasi DTO otomatis (class-validator)
-- Mendukung SQLite (default, tanpa setup) maupun MySQL (tinggal ganti `.env`)
-
-**Frontend**
-- Halaman Login & Register dengan validasi + pesan error
-- `AuthContext` menyimpan state user, load profile saat refresh
-- `ProtectedRoute` — redirect ke `/login` jika belum login
-- `axiosInstance.js` — request interceptor otomatis menyisipkan `Authorization: Bearer <token>`, response interceptor menangani 401 (auto logout + redirect)
-- Halaman Product CRUD lengkap (tambah/edit/hapus/cari) + tombol Logout
-
-
 
 **1. Flow autentikasi JWT (backend)**
 `AuthController` menerima request → `AuthService.register/login` memverifikasi
